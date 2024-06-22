@@ -5,7 +5,11 @@ function ContactList(props) {
   return (
     <div>
       {props.contacts.map((contact, index) => (
-        <Contacts key={index} contact={contact} />
+        <Contacts key={index} contact={contact}
+        editContact = {props.editContact}
+        deleteContact ={props.deleteContact}
+        
+        />
       ))}
     </div>
   );

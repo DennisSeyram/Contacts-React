@@ -20,15 +20,16 @@ function ContactForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (name.length > 0 && number.length > 0 && location.length > 0) {
-      let newContact = {
-        name: name,
-        number: number,
-        location: location
-      };
-      props.addNewContact(newContact);
+    if (name.trim() === '' || number.trim() === '' || location.trim() === '') {
+      
+      return;
     }
-
+    let newContact = {
+      name: name,
+      number: number,
+      location: location
+    };
+    props.addNewContact(newContact);
     setName('');
     setNumber('');
     setLocation('');
@@ -37,7 +38,7 @@ function ContactForm(props) {
   return (
     <div>
       <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group className="mb-3" controlId="formBasicName">
           <Form.Label>Full Name</Form.Label>
           <Form.Control
             onChange={handleNameChange}
@@ -47,7 +48,7 @@ function ContactForm(props) {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="mb-3" controlId="formBasicNumber">
           <Form.Label>Phone Number</Form.Label>
           <Form.Control
             onChange={handleNumberChange}
@@ -57,7 +58,7 @@ function ContactForm(props) {
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="mb-3" controlId="formBasicLocation">
           <Form.Label>Location</Form.Label>
           <Form.Control
             onChange={handleLocationChange}
